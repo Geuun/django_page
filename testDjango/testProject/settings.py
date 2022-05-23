@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'user',
+    'board',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,39 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Summernote 필수 설정
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+INSTALLED_APPS += ['django_summernote']
+
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#Summernote 선택 설정
+SUMMERNOTE_THEME = 'bs4'
+
+SUMMERNOTE_CONFIG = {
+            'attachment_filesize_limit': 1024 * 1024 * 10,
+
+            #Summernote settings
+            'summernote': {
+                'width': 720,
+                'height': 480,
+                'lang': 'ko-KR',
+                'toolbar': [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'superscript', 'subscript',
+                              'strikethrough', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'hr']],
+                    ['view', ['fullscreen', 'codeview']],
+                    ['help', ['help']],
+                ],
+            }
+}
